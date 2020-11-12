@@ -21,7 +21,7 @@ def getNumberColumn(_file):
                     maxInt = int(char)
     
     _file.close()
-    return len(keys)
+    return maxInt
 
 def getDensity(_file, column_count, line_count):
     _file = open(_file, "r")
@@ -29,10 +29,62 @@ def getDensity(_file, column_count, line_count):
     count = 0
 
     for line in lines: 
-        count += len(line.split(" "))
+        count += len(line.split(" ")[:-1])
 
     _file.close()
     return count / (column_count * line_count)
+
+def getVonNeumannStress(_file, column_count, line_count):
+    _file = open(_file, "r")
+    lines = _file.readlines()
+    count = 0
+    matrix = []
+    matrix_stress = 0
+
+    for line in lines:
+        current_line = [0] * column_count
+
+        for bit in line.split(" ")[:-1]:
+            current_line[int(bit) - 1] = 1
+        matrix.append(current_line)
+
+    for i in range(line_count):
+        for j in range(column_count):
+            column_stress = 0                
+
+            for k in range(max([0, i - 1]),  min(line_count - 1, i + 1) + 1):
+                column_stress += (int(matrix[i][j]) - int(matrix[k][j])) ** 2
+
+            row_stress = 0
+            for l in range(max([0, j - 1]),  min(column_count - 1, j + 1) + 1):
+                row_stress += (int(matrix[i][j]) - int(matrix[i][l])) ** 2
+
+            matrix_stress += row_stress + column_stress
+
+    return matrix_stress
+
+def getMooreStress(_file, column_count, line_count):
+    _file = open(_file, "r")
+    lines = _file.readlines()
+    count = 0
+    matrix = []
+    matrix_stress = 0
+
+    for line in lines:
+        current_line = [0] * column_count
+
+        for bit in line.split(" ")[:-1]:
+            current_line[int(bit) - 1] = 1
+        matrix.append(current_line)
+
+    for i in range(line_count):
+        for j in range(column_count):              
+            for k in range(max([0, i - 1]),  min(line_count - 1, i + 1) + 1):
+                for l in range(max([0, j - 1]),  min(column_count - 1, j + 1) + 1):
+                    matrix_stress += (int(matrix[i][j]) - int(matrix[k][l])) ** 2
+
+    return matrix_stress
+
 
 
 for _fileName in os.listdir("./Density"):
@@ -50,3 +102,6 @@ for _fileName in os.listdir("./Density"):
     column_count = getNumberColumn(_fileName)
 
     print("Density " + _fileName + " : " + str(getDensity(_fileName, column_count, line_count)))
+    print("Von neumann stress " + _fileName + " : " + str(getVonNeumannStress(_fileName, column_count, line_count)))
+    print("Moore stress " + _fileName + " : " + str(getMooreStress(_fileName, column_count, line_count)))
+    print()
