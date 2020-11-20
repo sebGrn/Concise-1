@@ -61,7 +61,21 @@ def getVonNeumannStress(_file, column_count, line_count):
 
             matrix_stress += row_stress + column_stress
 
-    return matrix_stress
+    nbCorners = 4
+    nbEdges = 0
+    nbInsideCells = 0
+
+    if column_count > 2:
+        nbEdges += (column_count - 2) * 2
+
+    if line_count > 2:
+        nbEdges += (line_count - 2) * 2
+
+    nbInsideCells = (line_count - 2) * (column_count - 2)
+
+    max_stress = nbCorners*2 + nbEdges*3 + nbInsideCells*4
+
+    return matrix_stress / max_stress
 
 def getMooreStress(_file, column_count, line_count):
     _file = open(_file, "r")
@@ -83,7 +97,21 @@ def getMooreStress(_file, column_count, line_count):
                 for l in range(max([0, j - 1]),  min(column_count - 1, j + 1) + 1):
                     matrix_stress += (int(matrix[i][j]) - int(matrix[k][l])) ** 2
 
-    return matrix_stress
+    nbCorners = 4
+    nbEdges = 0
+    nbInsideCells = 0
+
+    if column_count > 2:
+        nbEdges += (column_count - 2) * 2
+
+    if line_count > 2:
+        nbEdges += (line_count - 2) * 2
+
+    nbInsideCells = (line_count - 2) * (column_count - 2)
+
+    max_stress = nbCorners*2 + nbEdges*3 + nbInsideCells*4
+
+    return matrix_stress / max_stress
 
 
 
