@@ -410,7 +410,6 @@ void QCRunner::computeFcaCemb()
             }else {
 
                 size_t size = max_values_and_indices.size() / nb_threads;
-
                 if(size <= 1){
                     auto result = getBestIndice(max_values_and_indices, covered_tuples);
                     best_i = result[0];
@@ -419,12 +418,13 @@ void QCRunner::computeFcaCemb()
                     vector<std::future<vector<int>>> currentProcesses = vector<std::future<vector<int>>>();
                     for (int i = 0; i < nb_threads; ++i) {
 
-                        auto curent_max_values_and_indices = std::vector<pair<size_t, size_t>>(
-                                max_values_and_indices.begin() + (size * i),
-                                        max_values_and_indices.begin() + (size * (i + 1)));
+                        auto start_itr = std::next(max_values_and_indices.cbegin(), i*size);
+                        auto end_itr = std::next(max_values_and_indices.cbegin(), i*size + size);
 
-                        if (max_values_and_indices.size() % 2 && i == nb_threads - 1)
-                            curent_max_values_and_indices.push_back(max_values_and_indices.back());
+                        if (i == nb_threads - 1)
+                            end_itr = max_values_and_indices.cend();
+
+                        auto curent_max_values_and_indices = std::vector<pair<size_t, size_t>>(start_itr, end_itr);
 
                         currentProcesses.push_back(pool.enqueue([covered_tuples, this, curent_max_values_and_indices] {
                             int max_val = -1;
@@ -475,6 +475,7 @@ void QCRunner::computeFcaCemb()
                             best_i = result[0];
                         }
                     }
+
                 }
             }
 
