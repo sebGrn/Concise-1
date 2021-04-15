@@ -69,9 +69,10 @@ def createTransactionalFile(_file):
     
     with open('temp_trans.data', 'w') as f:
         for line in transactionalMatrice:
-            for column in line:
-                f.write("%s " % column)
-            f.write("\n")
+            if len(line) > 0:
+                for column in line:
+                    f.write("%s " % column)
+                f.write("\n")
 
 def getNumberColumn(isBinary, _file):
     if(isBinary):
