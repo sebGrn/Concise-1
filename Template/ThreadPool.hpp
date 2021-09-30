@@ -2,8 +2,8 @@
 // Created by axel on 11/08/2020.
 //
 
-#ifndef QUALITY_COVER_THREADPOOL_H
-#define QUALITY_COVER_THREADPOOL_H
+#ifndef CONCISE_COVER_THREADPOOL_H
+#define CONCISE_COVER_THREADPOOL_H
 
 
 #include <condition_variable>
@@ -96,4 +96,4 @@ private:
 };
 
 
-#endif //QUALITY_COVER_THREADPOOL_H
+#endif //CONCISE_COVER_THREADPOOL_H

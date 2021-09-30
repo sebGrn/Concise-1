@@ -23,6 +23,7 @@ WORKDIR /usr/src/app
 
 COPY . /usr/src/app
 
-EXPOSE 8080
-
+#EXPOSE 8080
 RUN alias python3=python3.8
+
+#docker build --no-cache -t concise .

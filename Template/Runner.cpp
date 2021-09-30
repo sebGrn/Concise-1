@@ -1,7 +1,7 @@
 ﻿#include <string>
 #include <map>
 #include <utility>
-#include "QCRunner.hpp"
+#include "Runner.hpp"
 #include<algorithm>
 #include<functional>
 #include<string>
@@ -10,7 +10,7 @@
 #include <thread>
 #include "ThreadPool.hpp"
 
-QCRunner::QCRunner(const std::string& _outputFilename, float _threshold = 1., bool _useMeasures = false, bool _useMandatory = false, bool _useParallelism = false, bool _constantMemoryMode = false, bool _benchmarkMode = false) {
+Runner::Runner(const std::string& _outputFilename, float _threshold = 1., bool _useMeasures = false, bool _useMandatory = false, bool _useParallelism = false, bool _constantMemoryMode = false, bool _benchmarkMode = false) {
     this->threshold = _threshold;
     this->useMeasures = _useMeasures;
     this->nb_covered_tuples = 0;
@@ -38,11 +38,11 @@ QCRunner::QCRunner(const std::string& _outputFilename, float _threshold = 1., bo
 
 }
 
-QCRunner::~QCRunner()
+Runner::~Runner()
 {
 }
 
-void QCRunner::prepareFile(const std::string& inputFilename)
+void Runner::prepareFile(const std::string& inputFilename)
 {
     TransactionalDataParser parser = TransactionalDataParser();
     parser.parse(this, inputFilename);
@@ -52,14 +52,14 @@ void QCRunner::prepareFile(const std::string& inputFilename)
 
 }
 
-void QCRunner::runFcaCemb(const std::string& inputFilename)
+void Runner::runFcaCemb(const std::string& inputFilename)
 {
     this->prepareFile(inputFilename);
     // compute everything
     this->computeFcaCemb();
 }
 
-string QCRunner::calculateMeasures(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
+string Runner::calculateMeasures(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
 {
     float objectUniformity = calculateMeasureObjectUniformity(extent, intent);
     this->measures["object uniformity"] += objectUniformity;
@@ -83,7 +83,7 @@ string QCRunner::calculateMeasures(std::bitset<$_LINE_NUMBER>& extent, std::bits
     return measure_stream.str();
 }
 
-float QCRunner::calculateMeasureObjectUniformity(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
+float Runner::calculateMeasureObjectUniformity(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
 {
     float sum = 0;
     size_t a = extent.count();
@@ -97,7 +97,7 @@ float QCRunner::calculateMeasureObjectUniformity(std::bitset<$_LINE_NUMBER>& ext
     return sum / extent.count();
 }
 
-float QCRunner::calculateMeasureMonocle(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
+float Runner::calculateMeasureMonocle(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
 {
     float sumA = 0;
     float sumB = 0;
@@ -141,12 +141,12 @@ float QCRunner::calculateMeasureMonocle(std::bitset<$_LINE_NUMBER>& extent, std:
     return a * b;
 }
 
-float QCRunner::calculateMeasureFrequency(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
+float Runner::calculateMeasureFrequency(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
 {
     return static_cast<float>(extent.count()) / extent.size();
 }
 
-float QCRunner::calculateMeasureSeparation(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
+float Runner::calculateMeasureSeparation(std::bitset<$_LINE_NUMBER>& extent, std::bitset<$_COLUMN_NUMBER>& intent)
 {
     float axb = extent.count() * intent.count();
     float sumg = 0;
@@ -167,7 +167,7 @@ float QCRunner::calculateMeasureSeparation(std::bitset<$_LINE_NUMBER>& extent, s
 }
 
 
-void QCRunner::writeTuples()
+void Runner::writeTuples()
 {
     std::ofstream outputFile(this->outputFilename + ".out", ofstream::out);
 
@@ -209,7 +209,7 @@ void QCRunner::writeTuples()
     outputFile.close();
 }
 
-void QCRunner::writeStats(){
+void Runner::writeStats(){
     size_t totalSize = this->nbNonMandatoryConcept + this->nbMandatoryConcept;
 
     std::ofstream outputFileRessourceUsage(this->outputFilename + ".stats", ofstream::app);
@@ -222,7 +222,7 @@ void QCRunner::writeStats(){
 }
 
 
-std::string QCRunner::printIntent(std::bitset<$_COLUMN_NUMBER> db)
+std::string Runner::printIntent(std::bitset<$_COLUMN_NUMBER> db)
 {
     std::stringstream stream;
     bool firstItem = true;
@@ -239,7 +239,7 @@ std::string QCRunner::printIntent(std::bitset<$_COLUMN_NUMBER> db)
     return stream.str();
 }
 
-std::string QCRunner::printExtent(std::bitset<$_LINE_NUMBER> db)
+std::string Runner::printExtent(std::bitset<$_LINE_NUMBER> db)
 {
     std::stringstream stream;
     bool firstItem = true;
@@ -257,7 +257,7 @@ std::string QCRunner::printExtent(std::bitset<$_LINE_NUMBER> db)
 }
 
 
-int QCRunner::lookForMandatoryFcaCemb(size_t i, vector<std::bitset<$_LINE_NUMBER>>& covered_tuples)
+int Runner::lookForMandatoryFcaCemb(size_t i, vector<std::bitset<$_LINE_NUMBER>>& covered_tuples)
 {
     int _nb_covered_tuples = 0;
 
@@ -325,7 +325,7 @@ int QCRunner::lookForMandatoryFcaCemb(size_t i, vector<std::bitset<$_LINE_NUMBER
     return _nb_covered_tuples;
 }
 
-void QCRunner::computeFcaCemb()
+void Runner::computeFcaCemb()
 {
     this->nb_covered_tuples = 0;
     this->total = 0;
@@ -531,7 +531,7 @@ void QCRunner::computeFcaCemb()
     }
 }
 
-void QCRunner::writeSingleTuple(bool append, bool mandatory, pair<std::bitset<$_LINE_NUMBER>, std::bitset<$_COLUMN_NUMBER>> tuple){
+void Runner::writeSingleTuple(bool append, bool mandatory, pair<std::bitset<$_LINE_NUMBER>, std::bitset<$_COLUMN_NUMBER>> tuple){
     std::ofstream outputFile;
     if(append)
         outputFile.open(this->outputFilename + ".out", ofstream::app);
@@ -552,7 +552,7 @@ void QCRunner::writeSingleTuple(bool append, bool mandatory, pair<std::bitset<$_
     outputFile.close();
 }
 
-void QCRunner::writeSummary(){
+void Runner::writeSummary(){
     std::ofstream outputFile(this->outputFilename + ".out", ofstream::app);
 
     outputFile << "# Mandatory: " << this->nbMandatoryConcept << endl;

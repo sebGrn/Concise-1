@@ -26,13 +26,13 @@ using std::pair;
 using std::make_pair;
 using std::greater;
 
-class QCRunner
+class Runner
 {
     friend class TransactionalDataParser;
 
 public:
-    QCRunner(const std::string& _outputFilename, float _threshold, bool useMeasures, bool _useMandatory, bool _useParallelism, bool _constantMemoryMode, bool _benchmarkMode);
-    ~QCRunner();
+    Runner(const std::string& _outputFilename, float _threshold, bool useMeasures, bool _useMandatory, bool _useParallelism, bool _constantMemoryMode, bool _benchmarkMode);
+    ~Runner();
 
     void runFcaCemb(const std::string& inputFilename);
     void writeStats();

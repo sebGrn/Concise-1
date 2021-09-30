@@ -4,7 +4,7 @@ import shutil
 import subprocess
 import argparse
 
-def createCustomQualityCover(line_count, column_count, isBinary, mandatory, delay = 100000):
+def createCustomConcise(line_count, column_count, isBinary, mandatory, delay = 100000):
     if not os.path.exists(str(line_count) + "x" + str(column_count)):
         os.makedirs(str(line_count) + "x" + str(column_count))
         os.makedirs(str(line_count) + "x" + str(column_count) + "/cmake")
@@ -35,11 +35,8 @@ def createCustomQualityCover(line_count, column_count, isBinary, mandatory, dela
 
         p = subprocess.Popen(["make"], cwd=str(line_count) + "x" + str(column_count) + "/cmake")
         p.wait()
-        
-
-        
     else:
-        print("Version déjà compilée")
+        print("Compiled version")
 
 def str2bool(v):
     if isinstance(v, bool):
@@ -49,7 +46,7 @@ def str2bool(v):
     elif v.lower() in ('no', 'false', 'f', 'n', '0'):
         return False
     else:
-        raise argparse.ArgumentTypeError('Valeur booléenne attendue')
+        raise argparse.ArgumentTypeError('Expected boolean value')
 
 def createTransactionalFile(_file):
     _file = open(_file, "r")
@@ -121,7 +118,7 @@ while 1:
 _file.close()
 column_count = getNumberColumn(str2bool(args.binary), args.inputFile)
 
-createCustomQualityCover(line_count, column_count, str2bool(args.binary), str2bool(args.mandatory))
+createCustomConcise(line_count, column_count, str2bool(args.binary), str2bool(args.mandatory))
     
 '''
 1 : input file
@@ -134,7 +131,7 @@ createCustomQualityCover(line_count, column_count, str2bool(args.binary), str2bo
 8 : benchmarkmode
 9 : delay
 '''
-p = subprocess.Popen(["./QualityCover", 
+p = subprocess.Popen(["./Concise", 
     "../../temp_trans.data" if str2bool(args.binary) else "../../" + args.inputFile, 
     str(str2bool(args.mandatory)), 
     str(str2bool(args.mesures)), 

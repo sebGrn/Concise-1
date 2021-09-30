@@ -4,7 +4,7 @@ import shutil
 import subprocess
 import argparse
 
-def createCustomQualityCover(line_count, column_count, delay):
+def createCustomConcise(line_count, column_count, delay):
     if not os.path.exists(str(line_count) + "x" + str(column_count)):
         os.makedirs(str(line_count) + "x" + str(column_count))
         os.makedirs(str(line_count) + "x" + str(column_count) + "/cmake")
@@ -34,10 +34,7 @@ def createCustomQualityCover(line_count, column_count, delay):
         p.wait()
 
         p = subprocess.Popen(["make"], cwd=str(line_count) + "x" + str(column_count) + "/cmake")
-        p.wait()
-        
-
-        
+        p.wait()        
     else:
         print("Version déjà compilée")
 
@@ -69,6 +66,7 @@ def getNumberColumn(_file):
     _file.close()
     return len(keys)
 
+# ----------------------------------------------------------------------------------------------------------- #
 
 files = os.listdir("./BenchmarkOutput")
 for f in files:
@@ -90,7 +88,7 @@ for _file in os.listdir("./Benchmark"):
 
     column_count = getNumberColumn("./Benchmark/" + _file)
 
-    createCustomQualityCover(line_count, column_count, args.delay)
+    createCustomConcise(line_count, column_count, args.delay)
         
     '''
     1 : input file
@@ -106,7 +104,7 @@ for _file in os.listdir("./Benchmark"):
 
     threshold = 1.0
     while threshold > 0.5:
-        p = subprocess.Popen(["./QualityCover", 
+        p = subprocess.Popen(["./Concise", 
             "../../Benchmark/" + _file, 
             "True", 
             "False", 
@@ -119,7 +117,7 @@ for _file in os.listdir("./Benchmark"):
             cwd=str(line_count) + "x" + str(column_count) + "/cmake")
         p.wait()
 
-        p = subprocess.Popen(["./QualityCover", 
+        p = subprocess.Popen(["./Concise", 
             "../../Benchmark/" + _file, 
             "True", 
             "False", 
@@ -132,7 +130,7 @@ for _file in os.listdir("./Benchmark"):
             cwd=str(line_count) + "x" + str(column_count) + "/cmake")
         p.wait()
 
-        p = subprocess.Popen(["./QualityCover", 
+        p = subprocess.Popen(["./Concise", 
             "../../Benchmark/" + _file, 
             "False", 
             "False", 
@@ -145,7 +143,7 @@ for _file in os.listdir("./Benchmark"):
             cwd=str(line_count) + "x" + str(column_count) + "/cmake")
         p.wait()
 
-        p = subprocess.Popen(["./QualityCover", 
+        p = subprocess.Popen(["./Concise", 
             "../../Benchmark/" + _file, 
             "False", 
             "False", 

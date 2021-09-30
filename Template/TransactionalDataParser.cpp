@@ -1,14 +1,14 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "QCRunner.hpp"
+#include "Runner.hpp"
 #include "TransactionalDataParser.hpp"
 
 TransactionalDataParser::TransactionalDataParser()
 {
 }
 
-bool TransactionalDataParser::parse(QCRunner* runner, const std::string& inputFilename)
+bool TransactionalDataParser::parse(Runner* runner, const std::string& inputFilename)
 {
     Logger::start_tick();
 
@@ -77,7 +77,7 @@ map<int, string> TransactionalDataParser::getMapIntToString()
     return this->dataIntToString;
 }
 
-bool TransactionalDataParser::initIntentConcept(QCRunner* runner)
+bool TransactionalDataParser::initIntentConcept(Runner* runner)
 {
     Logger::start_tick();
     {

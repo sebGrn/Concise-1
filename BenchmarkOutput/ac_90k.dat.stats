@@ -3,16 +3,15 @@ ___________________________________________
 Mandatory: True Parallelism: True Threshold: 1.0
 
 TIME VM RSS CPU
-0 80656 4632 1.74408e-08
-100 83212 7008 25
-200 85588 9384 25
-300 86408 10240 25
-400 86408 10240 25
-500 1.00398e+06 10240 37.5
-600 1.26612e+06 10240 75
-700 1.26612e+06 10240 77.5
-800 1.26612e+06 10240 70
-Elapsed time: 0.915746s
+0 80180 3892 0
+100 82556 6272 5
+200 84716 8384 4.375
+300 86328 10064 5
+400 86328 10064 6.25
+500 1.2005e+06 12112 9.375
+600 1.26604e+06 12112 45.625
+700 1.26604e+06 12112 46.875
+Elapsed time: 0.805768s
 
 Total: 37
 Mandatory: 0
@@ -23,11 +22,380 @@ ___________________________________________
 Mandatory: True Parallelism: False Threshold: 1.0
 
 TIME VM RSS CPU
-0 80656 4604 1.74408e-08
-100 83212 6980 25
-200 85456 9356 25
-300 86408 10208 25
-400 86408 10208 25
-500 217544 10208 25
-600 217544 10208 25
-700 217544 10208 25
+0 80312 3864 0
+100 82424 6256 3.75
+200 84584 8368 5
+300 86328 10048 5
+400 86328 10048 6.25
+500 217464 12096 6.875
+600 217464 12096 5.625
+700 217464 12096 6.25
+800 217464 12096 6.25
+900 217464 12096 6.25
+1000 217464 12096 6.25
+1100 217464 12096 6.25
+1200 217464 12096 6.25
+1300 217464 12096 6.25
+1400 217464 12096 6.25
+1500 217464 12096 6.25
+Elapsed time: 1.60906s
+
+Total: 37
+Mandatory: 0
+Non-mandatory: 37
+Coverage: 1411815/1411815(100.00000%)
+
+___________________________________________
+Mandatory: False Parallelism: True Threshold: 1.0
+
+TIME VM RSS CPU
+0 80180 3820 0
+100 82424 5928 4.375
+200 84584 8040 5
+300 1.26604e+06 12020 10
+400 1.26604e+06 12020 46.25
+500 1.26604e+06 12020 46.25
+Elapsed time: 0.604104s
+
+Total: 37
+Mandatory: 0
+Non-mandatory: 37
+Coverage: 1411815/1411815(100.00000%)
+
+___________________________________________
+Mandatory: False Parallelism: False Threshold: 1.0
+
+TIME VM RSS CPU
+0 80180 3820 0
+100 82556 6192 4.375
+200 84716 8304 5
+300 217464 12020 5
+400 217464 12020 6.25
+500 217464 12020 6.25
+600 217464 12020 6.25
+700 217464 12020 6.25
+800 217464 12020 6.25
+900 217464 12020 6.25
+1000 217464 12020 6.25
+1100 217464 12020 6.25
+1200 217464 12020 6.25
+Elapsed time: 1.30733s
+
+Total: 37
+Mandatory: 0
+Non-mandatory: 37
+Coverage: 1411815/1411815(100.00000%)
+
+___________________________________________
+Mandatory: True Parallelism: True Threshold: 0.9
+
+TIME VM RSS CPU
+0 80180 3944 0
+100 82556 6316 5
+200 84716 8428 4.375
+300 86328 10096 5
+400 86328 10096 6.25
+Elapsed time: 0.503661s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: True Parallelism: False Threshold: 0.9
+
+TIME VM RSS CPU
+0 80180 3804 0
+100 82556 6188 4.375
+200 84716 8300 5
+300 86328 9972 5
+400 86328 9972 6.25
+500 217464 12020 6.25
+Elapsed time: 0.604262s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: True Threshold: 0.9
+
+TIME VM RSS CPU
+0 80180 3796 0
+100 82424 6196 4.375
+200 84716 8308 5
+Elapsed time: 0.303012s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: False Threshold: 0.9
+
+TIME VM RSS CPU
+0 80180 3756 0
+100 82424 6156 5
+200 84584 8268 4.375
+300 217464 11984 4.375
+Elapsed time: 0.40328s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: True Parallelism: True Threshold: 0.8
+
+TIME VM RSS CPU
+0 80180 3820 0
+100 82556 6204 5
+200 84716 8316 4.375
+300 86328 9992 5
+400 86328 9992 6.25
+500 217464 12040 6.875
+Elapsed time: 0.605775s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: True Parallelism: False Threshold: 0.8
+
+TIME VM RSS CPU
+0 80180 3772 0
+100 82556 6160 5
+200 84716 8272 3.75
+300 86328 9944 5.625
+400 86328 9944 6.25
+500 217464 11992 6.25
+Elapsed time: 0.604482s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: True Threshold: 0.8
+
+TIME VM RSS CPU
+0 80180 3760 0
+100 82424 6160 4.375
+200 84716 8272 4.375
+Elapsed time: 0.30298s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: False Threshold: 0.8
+
+TIME VM RSS CPU
+0 80180 3892 0
+100 82424 6264 4.375
+200 84584 8376 5
+300 217464 12092 5
+Elapsed time: 0.403397s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: True Parallelism: True Threshold: 0.7000000000000001
+
+TIME VM RSS CPU
+0 80180 3880 0
+100 82556 6276 4.375
+200 84716 8388 5
+300 86328 10064 4.375
+400 86328 10064 6.25
+500 1.2005e+06 10276 9.375
+Elapsed time: 0.604203s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: True Parallelism: False Threshold: 0.7000000000000001
+
+TIME VM RSS CPU
+0 80180 3836 0
+100 82556 6208 5
+200 84584 8320 4.375
+300 86328 9996 5
+400 86328 9996 6.25
+500 217464 12044 6.25
+Elapsed time: 0.603949s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: True Threshold: 0.7000000000000001
+
+TIME VM RSS CPU
+0 80180 3888 0
+100 82424 6260 4.375
+200 84584 8372 5
+Elapsed time: 0.302772s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: False Threshold: 0.7000000000000001
+
+TIME VM RSS CPU
+0 80180 3808 0
+100 82424 6200 5
+200 84716 8312 4.375
+300 217464 12040 5
+Elapsed time: 0.403577s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: True Parallelism: True Threshold: 0.6000000000000001
+
+TIME VM RSS CPU
+0 80180 3780 0
+100 82424 6152 5
+200 84716 8264 4.375
+300 86328 9936 5
+400 86328 9936 6.25
+500 1.26604e+06 11984 9.375
+Elapsed time: 0.60397s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: True Parallelism: False Threshold: 0.6000000000000001
+
+TIME VM RSS CPU
+0 80180 3780 0
+100 82556 6152 5
+200 84716 8264 4.375
+300 86328 9932 5
+400 86328 9932 6.25
+500 217464 11980 6.25
+Elapsed time: 0.604217s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: True Threshold: 0.6000000000000001
+
+TIME VM RSS CPU
+0 80180 3808 0
+100 82424 6200 4.375
+200 84716 8312 5
+Elapsed time: 0.302874s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: False Threshold: 0.6000000000000001
+
+TIME VM RSS CPU
+0 80180 3952 0
+100 82424 6324 5
+200 84716 8436 4.375
+300 217464 12148 5
+Elapsed time: 0.40346s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: True Parallelism: True Threshold: 0.5000000000000001
+
+TIME VM RSS CPU
+0 80180 3848 0
+100 82556 6240 5
+200 84716 8352 3.75
+300 86328 10028 5
+400 86328 10028 6.25
+500 1.26604e+06 12224 9.375
+Elapsed time: 0.604061s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: True Parallelism: False Threshold: 0.5000000000000001
+
+TIME VM RSS CPU
+0 80180 3804 0
+100 82424 5912 4.375
+200 83924 7496 3.75
+300 86100 9608 4.375
+400 86328 9960 6.25
+500 86328 9960 6.25
+Elapsed time: 0.604067s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: True Threshold: 0.5000000000000001
+
+TIME VM RSS CPU
+0 80180 3928 0
+100 82424 6300 5
+200 84584 8412 4.375
+Elapsed time: 0.302788s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)
+
+___________________________________________
+Mandatory: False Parallelism: False Threshold: 0.5000000000000001
+
+TIME VM RSS CPU
+0 80180 3796 0
+100 82556 6168 5
+200 84716 8280 4.375
+300 217464 11996 5.625
+Elapsed time: 0.403205s
+
+Total: 1
+Mandatory: 0
+Non-mandatory: 1
+Coverage: 1296300/1411815(91.81798%)

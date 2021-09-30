@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "QCRunner.hpp"
+#include "Runner.hpp"
 #include <thread>
 #include <regex>
 #include <sstream>
@@ -48,7 +48,7 @@ int main(int argc, char ** argv) {
 
     std::thread displayRAMThread(&Logger::logRessourcesUsage, std::ref(endThread), outputFileName, parameters, atoi(argv[9]));
 
-    QCRunner runner(outputFileName, atof(argv[4]), useMesures, useMandatory, useParallelism, useConstantMemoryMode, useBenchmarkMode);
+    Runner runner(outputFileName, atof(argv[4]), useMesures, useMandatory, useParallelism, useConstantMemoryMode, useBenchmarkMode);
     runner.runFcaCemb(argv[1]);
 
 

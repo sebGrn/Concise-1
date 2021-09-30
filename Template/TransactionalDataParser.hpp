@@ -6,16 +6,16 @@ using std::ifstream;
 using std::string;
 using std::map;
 
-class QCRunner;
+class Runner;
 
 class TransactionalDataParser
 {
 public:
     TransactionalDataParser();
-    bool parse(QCRunner* runner, const std::string& inputFilename);
+    bool parse(Runner* runner, const std::string& inputFilename);
     map<string, int> getMapStringToInt();
     map<int, string> getMapIntToString();
-    bool initIntentConcept(QCRunner* runner);
+    bool initIntentConcept(Runner* runner);
 
 private:
     map<string, int> dataStringToInt;
