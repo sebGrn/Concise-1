@@ -11,7 +11,7 @@ docker volume create concise_vol
 docker run -it -v concise_vol:/usr/src/app/ concise:latest
 ```
 
-## Run the container
+## Run Concise inside the container
 ```
 python3.8 ./concise_benchmark.py
 ```
