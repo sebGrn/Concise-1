@@ -1,11 +1,11 @@
 # Concise
 
-# Build container
+## Build container
 ```
 docker build -t concise .
 ```
 
-# Run Consise into the container
+## Run Consise into the container
 ```
 docker volume create concise_vol
 docker run -it -v concise_vol:/usr/src/app/ concise:latest
