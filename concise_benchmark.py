@@ -93,7 +93,7 @@ for _file in os.listdir("./Benchmark"):
     '''
     1 : input file
     2 : mandatory
-    3 : use mesures
+    3 : use measures
     4 : threshold
     5 : output file
     6 : use parallelism

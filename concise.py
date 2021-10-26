@@ -98,13 +98,11 @@ def getNumberColumn(isBinary, _file):
 parser = argparse.ArgumentParser()
 parser.add_argument('--inputFile', required=True)
 parser.add_argument('--mandatory', default="true") 
-parser.add_argument('--mesures', default="false") 
+parser.add_argument('--measures', default="false") 
 parser.add_argument('--threshold', default="1.") 
-#parser.add_argument('--parallelism', default="false") 
 parser.add_argument('--binary', default="false") 
-#parser.add_argument('--constantMemory', default="true") 
-#parser.add_argument('--delay', default="100000")
 args = parser.parse_args()
+
 
 _file = open(args.inputFile, "r")
 line_count = 0
@@ -123,7 +121,7 @@ createCustomConcise(line_count, column_count, str2bool(args.binary), str2bool(ar
 '''
 1 : input file
 2 : mandatory
-3 : use mesures
+3 : use measures
 4 : threshold
 5 : output file
 6 : use parallelism
@@ -139,13 +137,13 @@ delay = 100000
 p = subprocess.Popen(["./Concise", 
     "../../temp_trans.data" if str2bool(args.binary) else "../../" + args.inputFile, 
     str(str2bool(args.mandatory)), 
-    str(str2bool(args.mesures)), 
+    str(str2bool(args.measures)), 
     args.threshold, 
     "../../" + args.inputFile, 
     str(parallelism),
     str(constantMemory),
     "False",
-    delay],
+    str(delay)],
     cwd=str(line_count) + "x" + str(column_count) + "/cmake")
 
 p.wait()
