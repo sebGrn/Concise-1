@@ -1,17 +1,29 @@
 # Concise
 
-## Build container
+## With Docker 
+
+### Build container
 ```
 docker build -t concise .
 ```
 
-## Run the container
+### Run the container
 ```
 docker volume create concise_vol
 docker run -it -v concise_vol:/usr/src/app/ concise:latest
 ```
 
-## Run Concise inside the container
+## Without Docker
+
+
+| Dependancies | version  |
+| ------ | ------ |
+| Python | 3.8 |
+| g++ | 10 |
+| CMake | 3.17.2 |
+
+
+## Launch Consice 
 ```
 python3.8 ./concise_benchmark.py
 ```
